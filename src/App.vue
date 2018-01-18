@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-      <color-picker></color-picker>
+      <!-- <color-picker></color-picker> -->
+      <predefined-color-picker></predefined-color-picker>
   </div>
 </template>
 
 <script>
 import ColorPicker from "./components/ColorPicker"
+import PredefinedColorPicker from "./components/PredefinedColorPicker"
 
 export default {
     components: {
-        ColorPicker
+        ColorPicker,
+        PredefinedColorPicker
     },
     name: "app",
     data() {
