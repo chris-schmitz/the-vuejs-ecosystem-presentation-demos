@@ -1,15 +1,18 @@
 <template>
   <div id="app">
       <color-picker></color-picker>
+      <image-gallery></image-gallery>
   </div>
 </template>
 
 <script>
 import ColorPicker from "./components/ColorPicker"
+import ImageGallery from "./components/ImageGallery"
 
 export default {
     components: {
-        ColorPicker
+        ColorPicker,
+        ImageGallery
     },
     name: "app",
     data() {
