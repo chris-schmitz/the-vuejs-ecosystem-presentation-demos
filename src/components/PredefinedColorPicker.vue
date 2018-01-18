@@ -1,16 +1,23 @@
 <template lang="pug">
-    div.example-container
-        v-select(
-            label='Color'
-            :items='colorOptions'
-            v-model="type"
+    v-card.predefined-color-card
+        v-card-media.card-media(
+            :style="{'background-color': color}"
         )
-        v-text-field(
-            label="Custom Color"
-            type="color"
-            v-model="color"
-            v-if="selectedModelType === 'Custom'"
-        )
+        v-card-title
+            h2 Predefined Color Picker
+        v-card-text
+            div.example-container
+                v-select(
+                    label='Color'
+                    :items='colorOptions'
+                    v-model="type"
+                )
+                v-text-field(
+                    label="Custom Color"
+                    type="color"
+                    v-model="color"
+                    v-if="selectedColorType === 'Custom'"
+                )
 </template>
 
 <script>
@@ -18,7 +25,21 @@ export default {
     data() {
         return {
             selectedColorType: "",
-            colorOptions: ["White", "Black", "Gray", "Custom"],
+            // Note that we're using strings here and down in the set function, but in
+            // a for-real-use component we'd probably want to use constants or (even better)
+            // an object map with a "label" and "value" for each color.
+            colorOptions: [
+                "White",
+                "Black",
+                "Kindof Gray",
+                "Teal-ish",
+                "Hot Pink",
+                "Custom"
+            ],
+            // Also note that ultimately, `color` is the only property we really care about.
+            // Everything else is just structure for the UI to allow the user to select the value
+            // to put in the `color` property. When we "save" the information from this component,
+            // we _only need to save the `color` property_.
             color: null
         }
     },
@@ -34,10 +55,16 @@ export default {
                     color = "#FFFFFF"
                 } else if (type === "Black") {
                     color = "#000000"
-                } else if (type === "Gray") {
-                    color = "#F0F0F0"
+                } else if (type === "Kindof Gray") {
+                    color = "#D3D3D3"
+                } else if (type === "Teal-ish") {
+                    color = "#2DD3E7"
+                } else if (type === "Hot Pink") {
+                    color = "#F60FA5"
                 }
+
                 this.color = color
+
                 this.selectedColorType = type
             }
         }
@@ -46,6 +73,13 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.example-container {
+.predefined-color-card {
+    width: 500px;
+
+    .card-media {
+        height: 450px !important;
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png");
+        background-position: center;
+    }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <!-- The View -->
-    <div class='example-component' :style="{'background-color': backgroundColor }">
+    <div v-app class='example-component' :style="{'background-color': backgroundColor }">
         <h1 :style="{'color': textColor}">Color Picker Component</h1>
         <div>
             <label for="textColor">Text Color</label>
