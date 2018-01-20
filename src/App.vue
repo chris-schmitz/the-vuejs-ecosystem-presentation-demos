@@ -1,8 +1,8 @@
 <template lang="pug">
     v-app#app
-        //- <color-picker></color-picker>
         v-content
-            predefined-color-picker
+            //- color-picker
+            //- predefined-color-picker
 </template>
 
 <script>
