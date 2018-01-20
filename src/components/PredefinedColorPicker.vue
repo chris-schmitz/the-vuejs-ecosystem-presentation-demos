@@ -1,3 +1,25 @@
+<template>
+    <!--!!!!!!!!!!
+    THIS IS THE EXAMPLE TEMPLATE
+    !!!!!!!!!! -->
+    <v-card class="predefined-color-card">
+        <v-card-media class="card-media" :style='{"background-color": color}'>
+        </v-card-media>
+        <v-card-title>
+            <h2>HIIIIIIPredefined Color Picker</h2>
+        </v-card-title>
+
+        <v-card-text>
+            <div class="example-container">
+                <v-select label='Color' :items='colorOptions' v-model="type">
+                </v-select>
+                <v-text-field label="Custom Color" type="color" v-model="color" v-if="selectedColorType === 'Custom'">
+                </v-text-field>
+            </div>
+        </v-card-text>
+    </v-card>
+</template>
+
 <template lang="pug">
     v-card.predefined-color-card
         v-card-media.card-media(
