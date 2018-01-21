@@ -1,6 +1,6 @@
 <template>
     <!-- The View -->
-    <div v-app class='example-component' :style="{'background-color': backgroundColor }">
+    <div class='example-component' :style="{'background-color': backgroundColor }">
         <h1 :style="{'color': textColor}">Color Picker Component</h1>
         <div>
             <label for="textColor">Text Color</label>
@@ -19,6 +19,19 @@
 </template>
 
 <script>
+// Note, the model isn't necessarily part of the ViewModel, it's just a javascript object
+// that holds our data. We're adding it directly to the viewmodel to fit the regular
+//  vue convention, but it would be just as valid if we created it separately and added it in
+// like this:
+//
+// const model = {textColor: null, backgroundColor: null}
+//
+// export default {
+//  data () {
+//      return model
+//  }
+// ...
+
 // The ViewModel
 export default {
     data() {

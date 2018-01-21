@@ -1,42 +1,21 @@
 <template lang="pug">
-    v-app#app
-        v-content
-            //- color-picker
-            //- predefined-color-picker
-            v-layout
-                v-flex
-                    list
-                v-flex(xs6 v-if="showDetails")
-                    detail
+    <div id="app">
+        <color-picker></color-picker>
+    </div>
 
 </template>
 
 <script>
 import ColorPicker from "./components/ColorPicker"
-import PredefinedColorPicker from "./components/PredefinedColorPicker"
-
-import List from "./components/list_and_detail/List"
-import Detail from "./components/list_and_detail/Detail"
-
-import sharedState from "./components/list_and_detail/SharedState"
 
 export default {
     components: {
-        ColorPicker,
-        PredefinedColorPicker,
-        List,
-        Detail
+        ColorPicker
     },
     name: "app",
     data() {
         return {
-            msg: "Welcome to Your Vue.js App",
-            sharedState
-        }
-    },
-    computed: {
-        showDetails() {
-            return this.sharedState.showDetails
+            msg: "Welcome to Your Vue.js App"
         }
     }
 }
