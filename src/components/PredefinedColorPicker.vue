@@ -21,25 +21,27 @@
 </template>
 
 <template lang="pug">
-    v-card.predefined-color-card
-        v-card-media.card-media(
-            :style="{'background-color': color}"
-        )
-        v-card-title
-            h2 Predefined Color Picker
-        v-card-text
-            div.example-container
-                v-select(
-                    label='Color'
-                    :items='colorOptions'
-                    v-model="type"
+    v-layout
+        v-flex(xs-4 offset-xs4)
+            v-card.predefined-color-card
+                v-card-media.card-media(
+                    :style="{'background-color': color}"
                 )
-                v-text-field(
-                    label="Custom Color"
-                    type="color"
-                    v-model="color"
-                    v-if="selectedColorType === 'Custom'"
-                )
+                v-card-title
+                    h2 Predefined Color Picker
+                v-card-text
+                    div.example-container
+                        v-select(
+                            label='Color'
+                            :items='colorOptions'
+                            v-model="type"
+                        )
+                        v-text-field(
+                            label="Custom Color"
+                            type="color"
+                            v-model="color"
+                            v-if="selectedColorType === 'Custom'"
+                        )
 </template>
 
 <script>

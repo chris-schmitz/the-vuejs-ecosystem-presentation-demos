@@ -1,42 +1,46 @@
 <template lang="pug">
     v-app#app
+        v-toolbar
+            v-toolbar-title Vue Ecosystem Demos
+            v-spacer
+            v-toolbar-items
+                //- Note that here I'm passing in strings that match the `name`
+                //- property for the routes, not the `path` property (notice the lack
+                //- of forward slash).
+                v-btn(@click="showComponent('simple-picker')") Simple Picker
+                v-btn(@click="showComponent('predefined-picker')") Predefined Picker
+                v-btn(@click="showComponent('list-and-detail')") List & Detail
+                //- I'm using buttons here to fit vuetify's astetic a bit better
+                //- and to show how to navigate via router from the viewmodel, but
+                //- you can also create router-driving-links by using the <router-link>
+                //- tag. For our three components it would look like this:
+                //-
+                //- router-link(to="/simple-picker") Simple Picker
+                //- router-link(to="/predefined-picker") Predefined Picker
+                //- router-link(to="/list-and-detail") List & Detail
+                //-
+                //- also note that these routes are pointing to the route paths,
+                //- not their names. you can do either, but names allow you decouple
+                //- the links from the paths.
         v-content
-            //- color-picker
-            //- predefined-color-picker
-            v-layout
-                v-flex
-                    list
-                v-flex(xs6 v-if="showDetails")
-                    detail
+
+            div
+                router-view
 
 </template>
 
 <script>
-import ColorPicker from "./components/ColorPicker"
-import PredefinedColorPicker from "./components/PredefinedColorPicker"
-
-import List from "./components/list_and_detail/List"
-import Detail from "./components/list_and_detail/Detail"
-
-import sharedState from "./components/list_and_detail/SharedState"
-
 export default {
-    components: {
-        ColorPicker,
-        PredefinedColorPicker,
-        List,
-        Detail
-    },
+    components: {},
     name: "app",
     data() {
         return {
-            msg: "Welcome to Your Vue.js App",
-            sharedState
+            msg: "Welcome to Your Vue.js App"
         }
     },
-    computed: {
-        showDetails() {
-            return this.sharedState.showDetails
+    methods: {
+        showComponent(routeName) {
+            this.$router.push({ name: routeName })
         }
     }
 }
@@ -49,7 +53,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
 }
 
 h1,

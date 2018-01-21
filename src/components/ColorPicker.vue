@@ -1,21 +1,33 @@
 <template>
     <!-- The View -->
-    <div v-app class='example-component' :style="{'background-color': backgroundColor }">
-        <h1 :style="{'color': textColor}">Color Picker Component</h1>
-        <div>
-            <label for="textColor">Text Color</label>
-            <input type="color" name="textColor" v-model="textColor">
-            <input  name="textColor" v-model="textColor">
-        </div>
+    <v-layout>
+        <v-flex xs-3>
+            <div class='example-component' :style="{'background-color': backgroundColor }">
+                <h1 :style="{'color': textColor}">Color Picker Component</h1>
 
-        <div>
-            <label for="backgroundColor">Background Color</label>
-            <input type="color" name="backgroundColor" v-model="backgroundColor">
-            <input  name="backgroundColor" v-model="backgroundColor">
-        </div>
+                <div>
+                    <v-text-field label="Text Color" type="color" name="textColor" v-model="textColor"></v-text-field>
+                    <v-text-field label="Text Color"  name="textColor" v-model="textColor"></v-text-field>
+                </div>
 
-        <button @click="reset">Reset</button>
-    </div>
+                <div>
+                    <v-text-field
+                        label="Background Color"
+                        type="color"
+                        v-model="backgroundColor"
+                    ></v-text-field>
+
+                    <v-text-field
+                        label="Background Color"
+                        name="backgroundColor"
+                        v-model="backgroundColor"
+                    ></v-text-field>
+                </div>
+
+                <v-btn @click="reset">Reset</v-btn>
+            </div>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -43,6 +55,7 @@ export default {
 <style lang='scss' scoped>
 .example-component {
     padding: 50px;
+    height: calc(100vh - 48px);
 
     > div {
         display: flex;
