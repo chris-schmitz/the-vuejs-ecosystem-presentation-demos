@@ -49,14 +49,16 @@ export default {
         const response = await axios.get("https://picsum.photos/list")
         const urlBase = "https://picsum.photos/500/350?image"
 
-        this.images = response.data.map(imageData => {
-            return {
-                title: imageData.filename,
-                artist: imageData.author,
-                url: `${urlBase}=${imageData.id}`,
-                caption: ""
-            }
-        })
+        this.images = response.data
+            .map(imageData => {
+                return {
+                    title: imageData.filename,
+                    artist: imageData.author,
+                    url: `${urlBase}=${imageData.id}`,
+                    caption: ""
+                }
+            })
+            .slice(0, 25)
     }
 }
 </script>
