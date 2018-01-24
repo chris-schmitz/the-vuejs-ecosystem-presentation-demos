@@ -6,19 +6,30 @@
         <v-card-media class="card-media" :style='{"background-color": color}'>
         </v-card-media>
         <v-card-title>
-            <h2>HIIIIIIPredefined Color Picker</h2>
+            <h2>Predefined Color Picker</h2>
         </v-card-title>
 
         <v-card-text>
             <div class="example-container">
                 <v-select label='Color' :items='colorOptions' v-model="type">
                 </v-select>
+                <!--
+                    note that outside of vuetify you could accomplish this select and option combination like this:
+                    <select v-model="type">
+                        <option v-for="option in colorOptions" :value="option">{{option}}</option>
+                    </select>
+                 -->
+
                 <v-text-field label="Custom Color" type="color" v-model="color" v-if="selectedColorType === 'Custom'">
                 </v-text-field>
             </div>
         </v-card-text>
     </v-card>
+    <!-- END OF EXAMPLE TEMPLATE -->
 </template>
+
+
+
 
 <template lang="pug">
     v-card.predefined-color-card
